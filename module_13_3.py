@@ -15,19 +15,19 @@ dp = Dispatcher(bot, storage=MemoryStorage())
 
 
 @dp.message_handler(commands=['start'])
-async def start_message(message: types.message.Message):
+async def start_message(message):
     """ обработчик команды start """
     # печатает строку в консоли 'Привет! Я бот помогающий твоему здоровью.' .
     # Запускается только когда написана команда '/start' в чате с ботом.
-    print('Привет! Я бот помогающий твоему здоровью.')
+    await message.answer('Привет! Я бот помогающий твоему здоровью.')
 
 
 @dp.message_handler()
-async def all_messages(message: types.message.Message):
+async def all_messages(message):
     """ обработчик остальных сообщений """
     # печатает строку в консоли 'Введите команду /start, чтобы начать общение.'.
     # Запускается при любом обращении не описанном ранее.
-    print('Введите команду /start, чтобы начать общение.')
+    await message.answer('Введите команду /start, чтобы начать общение.')
 
 
 def main():
